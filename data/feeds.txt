@@ -2,3 +2,11 @@
 https://www.theverge.com/rss/index.xml
 https://www.wired.com/feed/rss
 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+https://www.engadget.com/rss.xml
+https://arstechnica.com/feed/
+https://www.tomshardware.com/feeds/all
+https://www.cnet.com/rss/news/
+https://habr.com/ru/rss/all/all/?fl=ru
+https://www.ixbt.com/export/news.rss
+https://3dnews.ru/news/rss/
+
