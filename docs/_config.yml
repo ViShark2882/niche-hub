@@ -4,4 +4,5 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-url: # укажите URL, например https://username.github.io/niche-hub
+url: https://vishark2882.github.io/niche-hub
+
