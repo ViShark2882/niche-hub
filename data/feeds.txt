@@ -1,19 +1,7 @@
-# Футейдж и сток-видео
-https://blog.pond5.com/feed/                           # Официальный блог Pond5 (тренды и подборки) :contentReference[oaicite:0]{index=0}
-
-# Индустриальные блоги/аналитика (регулярные материалы о трендах спроса)
-https://petapixel.com/feed/                            # PetaPixel (новости фото/рынка) :contentReference[oaicite:1]{index=1}
-http://feeds.feedburner.com/PetaPixel                  # альтернативный канал PetaPixel (FeedBurner) :contentReference[oaicite:2]{index=2}
-https://fstoppers.com/feed                             # Fstoppers (советы/рынок, часто про стоки) :contentReference[oaicite:3]{index=3}
-https://www.ephotozine.com/full.xml                    # ePHOTOzine (лента целиком) :contentReference[oaicite:4]{index=4}
-https://photographylife.com/feed/                      # Photography Life (гайды/тенденции) :contentReference[oaicite:5]{index=5}
-https://digital-photography-school.com/feed/           # DPS: идеи и сезонные сюжеты (на спрос влияет) :contentReference[oaicite:6]{index=6}
-
-# Аналитика по «микростокам»
-http://feeds.feedburner.com/microstockinsider-industrynewsandreviews   # MicrostockInsider: рынок, что продаётся :contentReference[oaicite:7]{index=7}
-
-# Официальные тренд-репорты/порталы
-https://www.gettyimages.com/visualgps/creative-trends   # Страница трендов Getty (не RSS, но источник для Writer/Trends) :contentReference[oaicite:8]{index=8}
-https://helpx.adobe.com/stock/contributor/help/artist-hub-migration/creat-what-s-in-demand.html  # «Что в спросе» у Adobe Stock :contentReference[oaicite:9]{index=9}
-https://blog.adobe.com/en/publish/2024/12/03/escaping-surreal-familiar-adobe-2025-creative-trends-forecast  # Годовой Creative Trends от Adobe :contentReference[oaicite:10]{index=10}
-https://www.shutterstock.com/explore/the-shot-list      # Shot List от Shutterstock (список для съёмок; страница) :contentReference[oaicite:11]{index=11}
+https://blog.pond5.com/feed/
+https://petapixel.com/feed/
+https://fstoppers.com/feed
+https://www.ephotozine.com/full.xml
+https://photographylife.com/feed/
+https://digital-photography-school.com/feed/
+http://feeds.feedburner.com/microstockinsider-industrynewsandreviews
