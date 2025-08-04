@@ -42,7 +42,7 @@ def append_published(uid, path):
 
 def fetch_description(url, fallback):
     try:
-        html = requests.get(url, timeout=10, headers={"User-Agent":"Mozilla/5.0"}).text
+        html = requests.get(url, timeout=12, headers={"User-Agent":"Mozilla/5.0"}).text
         soup = BeautifulSoup(html, "html.parser")
         og = soup.find("meta", attrs={"property":"og:description"})
         if og and og.get("content"):
@@ -50,13 +50,12 @@ def fetch_description(url, fallback):
         desc = soup.find("meta", attrs={"name":"description"})
         if desc and desc.get("content"):
             return desc["content"]
-    except Exception as e:
+    except Exception:
         pass
     return fallback or ""
 
 def ai_summary(title, facts):
     if not USE_OLLAMA:
-        # Простой шаблон без ИИ
         return "Кратко: " + (facts[:200] if facts else "")
     try:
         import json
@@ -78,7 +77,9 @@ def write_post(row):
     filename = os.path.join(POSTS_DIR, f"{date}-{slug}.md")
     desc = fetch_description(link, row.get("summary",""))
     body = ai_summary(title, desc)
-    fm = f"---\nlayout: post\ntitle: \"{title.replace('"','\\"')}\"\ndate: {date}\ntags: [дайджест]\n---\n"
+    # Экранируем кавычки в заголовке
+    safe_title = title.replace('"','\"')
+    fm = f"---\nlayout: post\ntitle: \"{safe_title}\"\ndate: {date}\ntags: [дайджест]\n---\n"
     content = fm + "\n" + f"**Источник:** [ссылка]({link})\n\n" + body + "\n\n### Где посмотреть\n- Оригинал: [перейти]({link})\n"
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)

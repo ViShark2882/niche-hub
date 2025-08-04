@@ -1,0 +1,4 @@
+# Примеры RSS-источников. Замените на свои источники по нише.
+https://www.theverge.com/rss/index.xml
+https://www.wired.com/feed/rss
+https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml

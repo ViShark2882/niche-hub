@@ -1,0 +1,7 @@
+title: Niche Hub
+description: Автогенерируемый каталог и дайджест
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+url: # укажите URL, например https://username.github.io/niche-hub
