@@ -11,10 +11,18 @@ def load_feeds():
     urls = []
     with open(FEEDS_FILE, "r", encoding="utf-8") as f:
         for line in f:
+            # убираем пробелы по краям
             line = line.strip()
-            if not line or line.startswith("#"):
+            if not line:
                 continue
-            urls.append(line)
+            # режем инлайн-комментарий и все «хвосты» после первого URL
+            line = line.split("#", 1)[0].strip()
+            parts = line.split()
+            if not parts:
+                continue
+            url = parts[0].strip()
+            if url.lower().startswith("http"):
+                urls.append(url)
     return urls
 
 def read_catalog():
