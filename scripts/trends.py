@@ -31,27 +31,35 @@ def tokenize(text):
     return [t for t in text.split() if 3 <= len(t) <= 24 and not t.isdigit()]
 
 def top_keywords_from_catalog(days=7, topn=30):
-    cutoff = datetime.datetime.utcnow() - datetime.timedelta(days=days)
+    # делаем cutoff "aware" в UTC
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
     bag = collections.Counter()
     if not CATALOG.exists():
         return []
     with open(CATALOG, newline="", encoding="utf-8") as f:
         r = csv.DictReader(f)
         for row in r:
-            # collector пишет столбец 'published' в ISO; иногда пусто — пропускаем
-            dt_str = (row.get("published") or "").replace("Z", "")
+            dt_str = (row.get("published") or "").strip()
             if not dt_str:
                 continue
+            # нормализуем ISO: Z -> +00:00
+            dt_str = dt_str.replace("Z", "+00:00")
             try:
                 dt = datetime.datetime.fromisoformat(dt_str)
             except Exception:
                 continue
+            # если вдруг без пояса — считаем, что это UTC
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=datetime.timezone.utc)
+            # сравнение двух "aware" дат
             if dt >= cutoff:
                 title = (row.get("title") or "") + " " + (row.get("summary") or "")
                 bag.update(tokenize(title))
+    # фильтр шума
     stop = set("""and the for you your with from into what when how this that they them http https www com blog more read about adobe stock shutterstock pond5 getty image images video videos feed rss xml post posts page pages site""".split())
     items = [(k, v) for k, v in bag.items() if k not in stop]
     return sorted(items, key=lambda kv: kv[1], reverse=True)[:topn]
+
 
 def signals_from_vendor_pages():
     bag = collections.Counter()
