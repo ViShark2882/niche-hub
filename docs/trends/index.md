@@ -7,65 +7,65 @@ permalink: /trends/
 _Автообновление: 2025-08-05 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- golden hour — 4
-- hour light — 3
-- capturing emotional — 1
-- emotional portraits — 1
-- portraits golden — 1
-- light golden — 1
-- hour time — 1
-- time just — 1
-- just after — 1
-- after sunrise — 1
-- sunrise before — 1
-- before sunset — 1
-- sunset offers — 1
-- offers fleeting — 1
-- fleeting magical — 1
-- magical window — 1
-- window where — 1
-- where light — 1
-- light becomes — 1
-- becomes soft — 1
+- получения платежей — 12
+- media youtube — 8
+- youtube watch — 8
+- stock photography — 8
+- payoneer закроет — 8
+- закроет неактивные — 8
+- неактивные receiving — 8
+- вызвал панику — 8
+- панику многих — 8
+- многих своих — 8
+- аккаунты получения — 8
+- скажите пожалуйста — 8
+- пожалуйста выделю — 8
+- выделю фото — 8
+- фото каждое — 8
+- каждое фото — 8
+- фото имеет — 8
+- имеет индивидуальные — 8
+- индивидуальные ключевые — 8
+- google opal — 8
 
 ## ТОП фразы из лент (триграммы)
-- golden hour light — 3
-- capturing emotional portraits — 1
-- emotional portraits golden — 1
-- portraits golden hour — 1
-- hour light golden — 1
-- light golden hour — 1
-- golden hour time — 1
-- hour time just — 1
-- time just after — 1
-- just after sunrise — 1
-- after sunrise before — 1
-- sunrise before sunset — 1
-- before sunset offers — 1
-- sunset offers fleeting — 1
-- offers fleeting magical — 1
+- media youtube watch — 8
+- payoneer закроет неактивные — 8
+- закроет неактивные receiving — 8
+- вызвал панику многих — 8
+- панику многих своих — 8
+- аккаунты получения платежей — 8
+- скажите пожалуйста выделю — 8
+- пожалуйста выделю фото — 8
+- выделю фото каждое — 8
+- фото каждое фото — 8
+- каждое фото имеет — 8
+- фото имеет индивидуальные — 8
+- имеет индивидуальные ключевые — 8
+- сегодня покажу которое — 8
+- покажу которое сможет — 8
 
 ## Частые слова (контроль шума)
-- golden — 4
-- hour — 4
-- light — 4
-- capturing — 3
-- portraits — 3
-- emotional — 1
-- time — 1
-- just — 1
-- after — 1
-- sunrise — 1
-- before — 1
-- sunset — 1
-- offers — 1
-- fleeting — 1
-- magical — 1
-- window — 1
-- where — 1
-- becomes — 1
-- soft — 1
-- warm — 1
+- фото — 34
+- photo — 26
+- google — 22
+- video — 18
+- media — 16
+- youtube — 16
+- payoneer — 16
+- которые — 16
+- видео — 14
+- получения — 14
+- пожалуйста — 14
+- платежей — 12
+- выпуск — 12
+- спасибо — 12
+- сегодня — 12
+- watch — 10
+- boosty — 10
+- итоги — 10
+- stock — 10
+- года — 10
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - stock — 40
