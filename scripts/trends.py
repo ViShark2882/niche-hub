@@ -3,6 +3,7 @@
 Страница /trends/: агрегирует темы из профильных RSS-лент за 7 дней
 и извлекает сигналы со страниц трендов (Getty/Adobe/Shutterstock/Pond5).
 Результат записывает в docs/trends/index.md для GitHub Pages.
+Поддерживаются источники из data/catalog.csv, включая Telegram (t.me).
 """
 
 import csv
@@ -61,7 +62,9 @@ ALLOWED_DOMAINS = [
 ]
 
 
+# ---------- Утилиты ----------
 def fetch_text(url: str, timeout: int = 25) -> str:
+    """Берём текст со страницы: заголовки и абзацы (для трендов)."""
     try:
         r = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
         r.raise_for_status()
@@ -71,9 +74,11 @@ def fetch_text(url: str, timeout: int = 25) -> str:
     except Exception:
         return ""
 
+
 def tokenize(text: str) -> List[str]:
+    """Токенизация + чистка HTML/мусора, поддержка en/ru."""
     text = html.unescape(text or "")
-    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"<[^>]+>", " ", text)                   # на случай HTML
     text = text.lower()
     text = re.sub(r"[^a-zа-яё0-9\s\-]+", " ", text)
     raw = [t.strip("-") for t in text.split()]
@@ -81,18 +86,23 @@ def tokenize(text: str) -> List[str]:
     for t in raw:
         if t in KEEP_NUM:
             out.append(t); continue
-        if len(t) < 4 or t.isdigit():
+        if len(t) < 4 or t.isdigit():                      # короткие/чистые числа
             continue
         if t in STOP:
             continue
         out.append(t)
     return out
 
+
 def _allowed(src: str) -> bool:
+    """Разрешён ли источник каталога (по домену)."""
     s = (src or "").lower()
     return any(s.endswith(d) for d in ALLOWED_DOMAINS)
 
+
+# ---------- Агрегация по каталогу ----------
 def top_keywords_from_catalog(days: int = 7, topn: int = 30) -> List[Tuple[str,int]]:
+    """Частые отдельные слова из заголовков/анонсов за последние days."""
     cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
     bag = collections.Counter()
     if not CATALOG.exists():
@@ -117,4 +127,98 @@ def top_keywords_from_catalog(days: int = 7, topn: int = 30) -> List[Tuple[str,i
     items = [(k,v) for k,v in bag.items() if k not in STOP]
     return sorted(items, key=lambda kv: kv[1], reverse=True)[:topn]
 
-def top_phrases_from_catalog(n: int = 2, days: int = 7, topn: int =
+
+def top_phrases_from_catalog(n: int = 2, days: int = 7, topn: int = 20) -> List[Tuple[str,int]]:
+    """
+    Частые фразы (n-граммы) из заголовков/анонсов за последние days.
+    n=2 → биграммы, n=3 → триграммы.
+    """
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
+    c = collections.Counter()
+    if not CATALOG.exists():
+        return []
+    with open(CATALOG, newline="", encoding="utf-8") as f:
+        r = csv.DictReader(f)
+        for row in r:
+            if not _allowed(row.get("source")):
+                continue
+            dt_str = (row.get("published") or "").strip().replace("Z","+00:00")
+            if not dt_str:
+                continue
+            try:
+                dt = datetime.datetime.fromisoformat(dt_str)
+            except Exception:
+                continue
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=datetime.timezone.utc)
+            if dt < cutoff:
+                continue
+            tokens = tokenize((row.get("title") or "") + " " + (row.get("summary") or ""))
+            tokens = [t for t in tokens if t not in STOP]
+            for i in range(len(tokens) - n + 1):
+                gram = " ".join(tokens[i:i+n])
+                # если в грамме встречается стоп-слово — пропускаем
+                if any(w in STOP for w in gram.split()):
+                    continue
+                c[gram] += 1
+    return c.most_common(topn)
+
+
+# ---------- Сигналы с официальных тренд-страниц ----------
+def signals_from_vendor_pages() -> List[Tuple[str,int]]:
+    """Считаем частые слова по текстам страниц трендов."""
+    bag = collections.Counter()
+    for url in TREND_PAGES:
+        txt = fetch_text(url)
+        if txt:
+            bag.update(tokenize(txt))
+    trends = [(k,v) for k,v in bag.items() if k not in STOP]
+    return sorted(trends, key=lambda kv: kv[1], reverse=True)[:40]
+
+
+# ---------- Сборка страницы ----------
+def write_report() -> None:
+    today = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+
+    # из лент
+    kw_catalog = top_keywords_from_catalog()
+    phr2 = top_phrases_from_catalog(n=2, topn=20)
+    phr3 = top_phrases_from_catalog(n=3, topn=15)
+
+    # со страниц трендов
+    kw_pages = signals_from_vendor_pages()
+
+    md = [
+        "---",
+        "layout: page",
+        "title: Тренды недели",
+        "permalink: /trends/",
+        "---",
+        "",
+        f"_Автообновление: {today} (UTC)_",
+        "",
+        "## ТОП фразы из лент (биграммы)",
+    ]
+    md += [f"- {p} — {c}" for p, c in phr2]
+
+    md += ["", "## ТОП фразы из лент (триграммы)"]
+    md += [f"- {p} — {c}" for p, c in phr3]
+
+    md += ["", "## Частые слова (контроль шума)"]
+    md += [f"- {w} — {c}" for w, c in kw_catalog[:20]]
+
+    md += ["", "## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)"]
+    md += [f"- {w} — {c}" for w, c in kw_pages[:25]]
+
+    md += [
+        "",
+        "> Используйте фразы как темы съёмок и ключевые слова при загрузке на стоки.",
+        "",
+    ]
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    (OUT_DIR / "index.md").write_text("\n".join(md), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    write_report()
