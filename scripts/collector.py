@@ -3,7 +3,7 @@
 collector.py
 Собирает материалы из:
   • RSS-лент (feedparser)
-  • публичных Telegram-каналов (https://t.me/s/<channel> или https://t.me/<channel>)
+  • публичных Telegram-каналов (через RSS-прокси + HTML-фолбэк)
 Пишет/дополняет data/catalog.csv с колонками:
 uid,title,link,source,published,summary
 """
@@ -63,18 +63,17 @@ def load_feeds() -> list[tuple[str, str]]:
             line = line.strip()
             if not line:
                 continue
-            line = line.split("#", 1)[0].strip()  # срезаем комментарии справа
+            line = line.split("#", 1)[0].strip()  # режем комментарии справа
             if not line:
                 continue
-            token = line.split()[0]               # берём только первый «токен»
+            token = line.split()[0]               # только первый токен
             if token.startswith("telegram:"):
-                # формат: telegram:https://t.me/...  или telegram:https://t.me/s/...
                 feeds.append(("telegram", token.split(":", 1)[1].strip()))
             else:
                 feeds.append(("rss", token))
     return feeds
 
-# ---------- парсим RSS ----------
+# ---------- RSS ----------
 def parse_rss(url: str) -> list[dict]:
     items = []
     d = feedparser.parse(url)
@@ -85,7 +84,7 @@ def parse_rss(url: str) -> list[dict]:
         title = (e.get("title") or "").strip()
         summary = clean_text(e.get("summary") or e.get("description") or "", 500)
 
-        # время публикации
+        # published
         published = None
         for key in ("published_parsed", "updated_parsed"):
             t = e.get(key)
@@ -104,52 +103,75 @@ def parse_rss(url: str) -> list[dict]:
         })
     return items
 
-# ---------- парсим Telegram (публичные каналы/чаты) ----------
+# ---------- TELEGRAM ----------
+TG_RSS_PROXY = "https://tg.i-c-a.su/rss/{channel}"  # часто работает для публичных каналов
+
+def parse_tg_rss(channel: str) -> list[dict]:
+    url = TG_RSS_PROXY.format(channel=channel)
+    items = []
+    d = feedparser.parse(url)
+    for e in d.entries:
+        link = e.get("link") or ""
+        if not link:
+            # собираем линк вручную, если его нет
+            m = re.search(r"/(\d+)", e.get("id",""))
+            if m:
+                link = f"https://t.me/{channel}/{m.group(1)}"
+        if not link:
+            continue
+        title = (e.get("title") or "").strip()
+        summary = clean_text(e.get("summary") or e.get("description") or "", 500)
+        # time
+        published = None
+        for key in ("published_parsed", "updated_parsed"):
+            t = e.get(key)
+            if t:
+                published = datetime.datetime(*t[:6], tzinfo=datetime.timezone.utc).isoformat()
+                break
+        if not published:
+            published = iso_now()
+        items.append({
+            "title": title or clean_text(summary, 100) or f"Telegram post",
+            "link": link,
+            "source": "t.me",
+            "published": published,
+            "summary": summary or title
+        })
+    return items
+
 def normalize_tg_url(url: str) -> tuple[str, str]:
-    """
-    Возвращает (channel, page_url) для /s/<channel>
-    Принимает:
-      https://t.me/<channel>
-      https://t.me/s/<channel>
-      http://t.me/<channel> ...
-    """
-    url = url.strip()
-    m = re.match(r"^https?://t\.me/(?:s/)?([^/?#]+)", url)
+    m = re.match(r"^https?://t\.me/(?:s/)?([^/?#]+)", url.strip())
     if not m:
         raise ValueError("Not a t.me URL")
     channel = m.group(1)
     page_url = f"https://t.me/s/{channel}"
     return channel, page_url
 
-def fetch_telegram(url: str, throttle: float = 1.0) -> list[dict]:
+def parse_tg_html(channel: str) -> list[dict]:
     """
-    Скрейпит публичную страницу /s/<channel>.
-    Если Telegram вернул 4xx/5xx, пробует зеркальный просмотр через r.jina.ai.
+    HTML-фолбэк: пытаемся взять t.me/s/<channel>;
+    если не удалось/JS-страница — используем зеркальный рендер r.jina.ai.
     """
-    channel, page_url = normalize_tg_url(url)
     headers = {"User-Agent": "Mozilla/5.0"}
     items = []
+    page_url = f"https://t.me/s/{channel}"
 
     try:
         r = requests.get(page_url, headers=headers, timeout=25)
-        if r.status_code >= 400 or "tgme_widget_message_wrap" not in r.text:
-            # фолбэк: зеркальный текстовый рендер
+        use_mirror = (r.status_code >= 400) or ("tgme_widget_message_wrap" not in r.text)
+        if use_mirror:
             mirror = f"https://r.jina.ai/http://t.me/s/{channel}"
             r = requests.get(mirror, headers=headers, timeout=25)
-            if r.status_code >= 400:
-                raise RuntimeError(f"telegram mirror failed: {r.status_code}")
-            soup = BeautifulSoup(r.text, "lxml")
-        else:
-            soup = BeautifulSoup(r.text, "lxml")
+            r.raise_for_status()
+        soup = BeautifulSoup(r.text, "lxml")
     except Exception as e:
-        print(f"WARN: telegram fetch failed for {page_url}: {e}")
+        print(f"WARN: telegram html failed for {channel}: {e}")
         return items
 
-    # Структура сообщений
     blocks = soup.select("div.tgme_widget_message_wrap")
-    # Если это «зеркальный» текст без div'ов — пытаемся собрать ссылки по тексту
+
+    # Если «зеркало» отдало плоский текст — выковыриваем ссылки/текст
     if not blocks:
-        # ищем ссылки вида https://t.me/<channel>/<id>
         for a in soup.select("a[href*='t.me/']"):
             href = a.get("href", "")
             m = re.match(rf"^https?://t\.me/{re.escape(channel)}/(\d+)", href)
@@ -170,7 +192,7 @@ def fetch_telegram(url: str, throttle: float = 1.0) -> list[dict]:
         return items
 
     for block in blocks:
-        dp = block.get("data-post")  # формат: channel/1234
+        dp = block.get("data-post")  # channel/1234
         if not dp:
             continue
         try:
@@ -206,9 +228,24 @@ def fetch_telegram(url: str, throttle: float = 1.0) -> list[dict]:
             "summary": clean_text(text, 500)
         })
 
-    # небольшой таймаут между каналами, чтобы не схлопотать 429
-    time.sleep(throttle)
     return items
+
+def fetch_telegram(url: str, throttle: float = 1.0) -> list[dict]:
+    """
+    1) Пытаемся через RSS-прокси tg.i-c-a.su;
+    2) если пусто — парсим HTML (t.me/s + r.jina.ai).
+    Печатаем статистику по каналу.
+    """
+    channel, _ = normalize_tg_url(url)
+    via_rss = parse_tg_rss(channel)
+    via_html = []
+    if not via_rss:
+        via_html = parse_tg_html(channel)
+
+    total = len(via_rss) or len(via_html)
+    print(f"TG channel {channel}: rss={len(via_rss)} html={len(via_html)} total={total}")
+    time.sleep(throttle)
+    return via_rss if via_rss else via_html
 
 # ---------- точка входа ----------
 def main():
