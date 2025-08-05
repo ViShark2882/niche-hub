@@ -1,8 +1,3 @@
-https://petapixel.com/feed/
-https://fstoppers.com/feed
-https://www.ephotozine.com/full.xml
-https://photographylife.com/feed/
-https://digital-photography-school.com/feed/
 http://feeds.feedburner.com/microstockinsider-industrynewsandreviews
 https://www.shutterstock.com/blog/feed/
 https://blog.depositphotos.com/feed/
@@ -12,7 +7,7 @@ https://blog.dreamstime.com/rss
 https://www.videvo.net/blog/feed/
 https://motionarray.com/learn/feed/
 https://www.alamy.com/blog/rss
-https://photocrowd.com/blog/rss/            # если не откроется — просто удалите строку
+https://photocrowd.com/blog/rss/           
 https://www.camerajabber.com/feed/
 https://www.shutterbug.com/taxonomy/term/all/feed
 https://www.lightstalking.com/feed/
