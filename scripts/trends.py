@@ -1,95 +1,237 @@
-import csv, re, os, datetime, collections, pathlib
-from urllib.parse import urlparse
+# -*- coding: utf-8 -*-
+"""
+Страница /trends/: агрегирует темы из профильных RSS-лент за 7 дней
+и извлекает сигналы со страниц трендов (Getty/Adobe/Shutterstock/Pond5).
+Результат записывает в docs/trends/index.md для GitHub Pages.
+"""
+
+import csv
+import re
+import html
+import datetime
+import collections
+import pathlib
+from typing import List, Tuple
+
 import requests
 from bs4 import BeautifulSoup
 
+
+# ---------- Пути ----------
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "catalog.csv"
 OUT_DIR = ROOT / "docs" / "trends"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Официальные страницы с трендами (не RSS; берём заголовки/абзацы)
+# ---------- Вендорские страницы с трендами (не RSS) ----------
 TREND_PAGES = [
     "https://www.gettyimages.com/visualgps/creative-trends",
     "https://helpx.adobe.com/stock/contributor/help/artist-hub-migration/creat-what-s-in-demand.html",
     "https://www.shutterstock.com/explore/the-shot-list",
-    "https://blog.pond5.com/"
+    "https://blog.pond5.com/",
 ]
 
-def fetch_text(url, timeout=25):
+# ---------- Фильтры и стоп-слова ----------
+STOP_EN_RU = set(
+    """
+    and the for you your with from into what when how this that they them are our more learn click view read see free
+    a an of on in to by as is it its be or not can new best top news blog post posts page pages site
+    это как что для при или они она он его ее без уже ещё еще если когда куда либо либо-то либо-либо всех
+    """.split()
+)
+STOP_HTML = {
+    "amp", "nbsp", "href", "img", "src", "class", "quot", "ins", "figure",
+    "html", "jpg", "http", "https", "www", "com"
+}
+STOP_BRANDS = {"engadget", "ixbt", "habr", "verge", "cnet", "gsmarena", "apple", "amazon", "news"}
+KEEP_NUM = {"4k", "8k", "1080p", "720p", "60fps", "30fps", "hdr"}
+
+STOP = STOP_EN_RU | STOP_HTML | STOP_BRANDS
+
+# Только домены про фото/стоки: ограничиваем источники из каталога
+ALLOWED_DOMAINS = [
+    "blog.pond5.com",
+    "petapixel.com",
+    "fstoppers.com",
+    "ephotozine.com",
+    "photographylife.com",
+    "digital-photography-school.com",
+    "feeds.feedburner.com",  # MicrostockInsider
+]
+
+
+# ---------- Утилиты ----------
+def fetch_text(url: str, timeout: int = 25) -> str:
+    """Берём текст со страницы: заголовки и абзацы (для трендов)."""
     try:
-        html = requests.get(url, timeout=timeout, headers={"User-Agent":"Mozilla/5.0"}).text
-        soup = BeautifulSoup(html, "lxml")
+        r = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, "lxml")
         parts = [t.get_text(" ", strip=True) for t in soup.select("h1, h2, h3, p, li, a")]
         return " ".join(parts)
     except Exception:
         return ""
 
-def tokenize(text):
-    text = re.sub(r"[\t\r\n]+", " ", text.lower())
-    text = re.sub(r"[^\w\s\-]+", " ", text)
-    return [t for t in text.split() if 3 <= len(t) <= 24 and not t.isdigit()]
 
-def top_keywords_from_catalog(days=7, topn=30):
-    # делаем cutoff "aware" в UTC
+def tokenize(text: str) -> List[str]:
+    """Токенизация + чистка HTML/мусора, поддержка en/ru."""
+    text = html.unescape(text or "")
+    text = re.sub(r"<[^>]+>", " ", text)                   # на случай HTML
+    text = text.lower()
+    text = re.sub(r"[^a-zа-яё0-9\s\-]+", " ", text)
+    raw = [t.strip("-") for t in text.split()]
+    out: List[str] = []
+    for t in raw:
+        if t in KEEP_NUM:
+            out.append(t)
+            continue
+        if len(t) < 4 or t.isdigit():  # слишком короткие и чистые числа
+            continue
+        if t in STOP:
+            continue
+        out.append(t)
+    return out
+
+
+def _allowed(src: str) -> bool:
+    """Разрешён ли источник каталога (по домену)."""
+    s = (src or "").lower()
+    return any(s.endswith(d) for d in ALLOWED_DOMAINS)
+
+
+# ---------- Агрегация по каталогу ----------
+def top_keywords_from_catalog(days: int = 7, topn: int = 30) -> List[Tuple[str, int]]:
+    """Частые отдельные слова из заголовков/анонсов за последние days."""
     cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
     bag = collections.Counter()
+
     if not CATALOG.exists():
         return []
+
     with open(CATALOG, newline="", encoding="utf-8") as f:
         r = csv.DictReader(f)
         for row in r:
-            dt_str = (row.get("published") or "").strip()
+            if not _allowed(row.get("source")):
+                continue
+
+            dt_str = (row.get("published") or "").strip().replace("Z", "+00:00")
             if not dt_str:
                 continue
-            # нормализуем ISO: Z -> +00:00
-            dt_str = dt_str.replace("Z", "+00:00")
+
             try:
                 dt = datetime.datetime.fromisoformat(dt_str)
             except Exception:
                 continue
-            # если вдруг без пояса — считаем, что это UTC
+
             if dt.tzinfo is None:
                 dt = dt.replace(tzinfo=datetime.timezone.utc)
-            # сравнение двух "aware" дат
+
             if dt >= cutoff:
-                title = (row.get("title") or "") + " " + (row.get("summary") or "")
-                bag.update(tokenize(title))
-    # фильтр шума
-    stop = set("""and the for you your with from into what when how this that they them http https www com blog more read about adobe stock shutterstock pond5 getty image images video videos feed rss xml post posts page pages site""".split())
-    items = [(k, v) for k, v in bag.items() if k not in stop]
+                txt = (row.get("title") or "") + " " + (row.get("summary") or "")
+                bag.update(tokenize(txt))
+
+    items = [(k, v) for k, v in bag.items() if k not in STOP]
     return sorted(items, key=lambda kv: kv[1], reverse=True)[:topn]
 
 
-def signals_from_vendor_pages():
+def top_phrases_from_catalog(n: int = 2, days: int = 7, topn: int = 20) -> List[Tuple[str, int]]:
+    """
+    Частые фразы (n-граммы) из заголовков/анонсов за последние days.
+    n=2 → биграммы, n=3 → триграммы.
+    """
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
+    c = collections.Counter()
+
+    if not CATALOG.exists():
+        return []
+
+    with open(CATALOG, newline="", encoding="utf-8") as f:
+        r = csv.DictReader(f)
+        for row in r:
+            if not _allowed(row.get("source")):
+                continue
+
+            dt_str = (row.get("published") or "").strip().replace("Z", "+00:00")
+            if not dt_str:
+                continue
+
+            try:
+                dt = datetime.datetime.fromisoformat(dt_str)
+            except Exception:
+                continue
+
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=datetime.timezone.utc)
+            if dt < cutoff:
+                continue
+
+            tokens = tokenize((row.get("title") or "") + " " + (row.get("summary") or ""))
+            tokens = [t for t in tokens if t not in STOP]
+            for i in range(len(tokens) - n + 1):
+                gram = " ".join(tokens[i : i + n])
+                # если в грамме встречается стоп-слово — пропускаем
+                if any(w in STOP for w in gram.split()):
+                    continue
+                c[gram] += 1
+
+    return c.most_common(topn)
+
+
+# ---------- Сигналы с официальных тренд-страниц ----------
+def signals_from_vendor_pages() -> List[Tuple[str, int]]:
+    """Считаем частые слова по текстам страниц трендов."""
     bag = collections.Counter()
     for url in TREND_PAGES:
         txt = fetch_text(url)
         if txt:
             bag.update(tokenize(txt))
-    stop = set("""the and for with your you are our from into what when how more learn click view read see free""".split())
-    trends = [(k, v) for k, v in bag.items() if k not in stop]
+    trends = [(k, v) for k, v in bag.items() if k not in STOP]
     return sorted(trends, key=lambda kv: kv[1], reverse=True)[:40]
 
-def write_report():
+
+# ---------- Сборка страницы ----------
+def write_report() -> None:
     today = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+
+    # из лент
     kw_catalog = top_keywords_from_catalog()
+    phr2 = top_phrases_from_catalog(n=2, topn=20)
+    phr3 = top_phrases_from_catalog(n=3, topn=15)
+
+    # со страниц трендов
     kw_pages = signals_from_vendor_pages()
 
-    md = [f"---\nlayout: page\ntitle: Тренды недели\npermalink: /trends/\n---\n"]
-    md.append(f"_Автообновление: {today} (UTC)_\n")
-    md.append("## Что чаще всего всплывает в источниках за 7 дней\n")
+    md = [
+        "---",
+        "layout: page",
+        "title: Тренды недели",
+        "permalink: /trends/",
+        "---",
+        "",
+        f"_Автообновление: {today} (UTC)_",
+        "",
+        "## ТОП фразы из лент (биграммы)",
+    ]
+    md += [f"- {p} — {c}" for p, c in phr2]
 
-    if kw_catalog:
-        md.append("**Сигналы по материалам из лент:**")
-        md.extend([f"- {w} — {c}" for w, c in kw_catalog[:25]])
+    md += ["", "## ТОП фразы из лент (триграммы)"]
+    md += [f"- {p} — {c}" for p, c in phr3]
 
-    if kw_pages:
-        md.append("\n**Сигналы по страницам трендов (Getty/Adobe/Shutterstock/Pond5):**")
-        md.extend([f"- {w} — {c}" for w, c in kw_pages[:25]])
+    md += ["", "## Частые слова (проверка шума)"]
+    md += [f"- {w} — {c}" for w, c in kw_catalog[:20]]
 
-    md.append("\n> Подсказка: используйте эти слова как **темы съёмок** и **теги** при загрузке на стоки.\n")
+    md += ["", "## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)"]
+    md += [f"- {w} — {c}" for w, c in kw_pages[:25]]
+
+    md += [
+        "",
+        "> Используйте фразы как темы съёмок и ключевые слова при загрузке на стоки.",
+        "",
+    ]
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "index.md").write_text("\n".join(md), encoding="utf-8")
+
 
 if __name__ == "__main__":
     write_report()
