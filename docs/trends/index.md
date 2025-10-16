@@ -4,37 +4,37 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-10-15 (UTC)_
+_Автообновление: 2025-10-16 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- i-c-a media — 46
+- i-c-a media — 52
 - been banned — 40
-- добрый день — 36
 - бесплатную коллекцию — 34
+- добрый день — 28
+- adobe stock — 28
 - banned reason: — 26
-- adobe stock — 24
+- всем привет — 24
+- photo i-c-a — 24
 - scop работал — 24
 - видео бесплатную — 24
-- photo i-c-a — 22
+- media directorsoyuz — 22
+- directorsoyuz nofollow — 22
+- скорее всего — 22
 - работал скажете — 22
 - media youtube — 20
 - youtube watch — 20
-- всем привет — 20
-- media directorsoyuz — 20
-- directorsoyuz nofollow — 20
-- могу найти — 18
-- скорее всего — 18
+- может быть — 18
 - media neyr0graph — 16
-- здравствуйте здравствуйте — 16
 - номинировать видео — 16
+- данный момент — 14
 
 ## ТОП фразы из лент (триграммы)
 - been banned reason: — 26
-- photo i-c-a media — 22
+- photo i-c-a media — 24
+- i-c-a media directorsoyuz — 22
+- media directorsoyuz nofollow — 22
 - scop работал скажете — 22
 - media youtube watch — 20
-- i-c-a media directorsoyuz — 20
-- media directorsoyuz nofollow — 20
 - видео бесплатную коллекцию — 18
 - i-c-a media neyr0graph — 16
 - номинировать видео бесплатную — 16
@@ -46,26 +46,26 @@ _Автообновление: 2025-10-15 (UTC)_
 - media neyr0graph nofollow — 10
 
 ## Частые слова (контроль шума)
-- есть — 198
-- меня — 184
-- видео — 178
-- photo — 170
-- можно — 136
-- только — 124
-- день — 100
-- media — 100
-- тоже — 96
-- будет — 90
-- video — 82
-- спасибо — 82
-- через — 80
-- нужно — 76
-- адоб — 74
-- пока — 72
+- есть — 192
+- меня — 190
+- photo — 182
+- видео — 182
+- можно — 132
+- только — 132
+- media — 114
+- video — 88
+- тоже — 86
+- спасибо — 84
+- день — 82
+- было — 80
+- сейчас — 78
+- будет — 76
+- фото — 76
+- пароль — 76
+- через — 74
 - потом — 72
-- надо — 68
-- было — 66
-- сейчас — 66
+- нужно — 72
+- надо — 66
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - stock — 36
