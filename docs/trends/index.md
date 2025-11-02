@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-11-01 (UTC)_
+_Автообновление: 2025-11-02 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- добрый день — 56
-- i-c-a media — 46
-- been banned — 44
-- всем привет — 42
-- error occurred — 30
-- banned reason: — 26
-- photo i-c-a — 26
+- добрый день — 60
+- i-c-a media — 44
+- всем привет — 38
+- been banned — 36
+- error occurred — 34
+- photo i-c-a — 32
+- banned reason: — 24
 - подскажите пожалуйста — 24
-- adobe stock — 22
-- critical error — 20
-- день добрый — 18
-- media youtube — 18
-- youtube watch — 18
-- должно быть — 18
+- adobe stock — 24
+- critical error — 22
+- день добрый — 20
 - trendy stocker — 18
-- привет всем — 16
-- отправьте отчет — 16
+- media youtube — 16
+- youtube watch — 16
+- internal error — 16
 - media trendy — 16
+- media directorsoyuz — 16
+- directorsoyuz nofollow — 16
+- спасибо спасибо — 14
 - photo добрый — 14
-- internal error — 14
 
 ## ТОП фразы из лент (триграммы)
-- been banned reason: — 26
-- photo i-c-a media — 26
-- media youtube watch — 18
-- добрый день добрый — 16
-- день добрый день — 16
+- photo i-c-a media — 32
+- been banned reason: — 24
+- добрый день добрый — 18
+- день добрый день — 18
+- media youtube watch — 16
+- internal error occurred — 16
 - i-c-a media trendy — 16
 - media trendy stocker — 16
+- i-c-a media directorsoyuz — 16
+- media directorsoyuz nofollow — 16
 - photo добрый день — 14
-- всем привет всем — 14
-- привет всем привет — 14
-- номер отчета скиньте — 12
-- internal error occurred — 12
+- всем привет всем — 12
+- привет всем привет — 12
 - пожалуйста отправьте любое — 12
 - отправьте любое сообщение — 12
-- любое сообщение этот — 12
 
 ## Частые слова (контроль шума)
-- photo — 284
-- есть — 190
-- меня — 142
-- будет — 140
-- можно — 128
-- сейчас — 118
-- video — 116
-- media — 114
-- пожалуйста — 110
-- попробуйте — 106
-- через — 104
-- день — 98
-- спасибо — 98
-- работает — 96
-- только — 94
-- потом — 86
-- видео — 84
-- error — 84
-- ничего — 80
-- может — 80
+- photo — 288
+- есть — 194
+- меня — 146
+- сейчас — 142
+- можно — 140
+- будет — 132
+- через — 114
+- video — 112
+- попробуйте — 104
+- спасибо — 102
+- пожалуйста — 102
+- день — 100
+- media — 98
+- пока — 94
+- работает — 94
+- видео — 92
+- error — 90
+- только — 88
+- просто — 80
+- адоб — 80
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - stock — 36
