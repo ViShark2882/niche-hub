@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-11-02 (UTC)_
+_Автообновление: 2025-11-03 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- добрый день — 60
-- i-c-a media — 44
-- всем привет — 38
-- been banned — 36
+- добрый день — 58
+- i-c-a media — 54
+- been banned — 44
+- всем привет — 44
+- photo i-c-a — 36
 - error occurred — 34
-- photo i-c-a — 32
-- banned reason: — 24
+- banned reason: — 32
 - подскажите пожалуйста — 24
+- media directorsoyuz — 24
 - adobe stock — 24
 - critical error — 22
 - день добрый — 20
+- привет всем — 20
+- directorsoyuz nofollow — 20
 - trendy stocker — 18
 - media youtube — 16
 - youtube watch — 16
 - internal error — 16
 - media trendy — 16
-- media directorsoyuz — 16
-- directorsoyuz nofollow — 16
-- спасибо спасибо — 14
-- photo добрый — 14
+- логин пароль — 14
 
 ## ТОП фразы из лент (триграммы)
-- photo i-c-a media — 32
-- been banned reason: — 24
+- photo i-c-a media — 36
+- been banned reason: — 32
+- i-c-a media directorsoyuz — 24
+- media directorsoyuz nofollow — 20
 - добрый день добрый — 18
 - день добрый день — 18
+- всем привет всем — 16
+- привет всем привет — 16
 - media youtube watch — 16
 - internal error occurred — 16
 - i-c-a media trendy — 16
 - media trendy stocker — 16
-- i-c-a media directorsoyuz — 16
-- media directorsoyuz nofollow — 16
-- photo добрый день — 14
-- всем привет всем — 12
-- привет всем привет — 12
+- photo добрый день — 12
 - пожалуйста отправьте любое — 12
 - отправьте любое сообщение — 12
 
 ## Частые слова (контроль шума)
-- photo — 288
-- есть — 194
-- меня — 146
-- сейчас — 142
-- можно — 140
-- будет — 132
-- через — 114
-- video — 112
-- попробуйте — 104
-- спасибо — 102
-- пожалуйста — 102
-- день — 100
-- media — 98
-- пока — 94
-- работает — 94
-- видео — 92
-- error — 90
-- только — 88
-- просто — 80
-- адоб — 80
+- photo — 298
+- есть — 182
+- меня — 160
+- можно — 150
+- сейчас — 146
+- будет — 138
+- media — 124
+- попробуйте — 110
+- через — 108
+- только — 104
+- день — 104
+- video — 102
+- пожалуйста — 100
+- работает — 100
+- спасибо — 94
+- error — 92
+- просто — 88
+- тоже — 88
+- пока — 88
+- теперь — 86
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - stock — 36
