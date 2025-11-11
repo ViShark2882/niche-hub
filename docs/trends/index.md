@@ -4,94 +4,70 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-11-10 (UTC)_
+_Автообновление: 2025-11-11 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- i-c-a media — 52
-- добрый день — 52
-- всем привет — 48
-- been banned — 44
-- banned reason: — 38
-- media directorsoyuz — 38
-- directorsoyuz nofollow — 38
-- photo i-c-a — 36
+- добрый день — 56
+- i-c-a media — 46
+- been banned — 36
+- всем привет — 36
+- filters 5bcontent — 36
+- media directorsoyuz — 32
+- directorsoyuz nofollow — 32
+- 5bcontent type — 32
+- banned reason: — 30
+- photo i-c-a — 30
 - добрый вечер — 28
-- подскажите пожалуйста — 20
 - день добрый — 18
-- привет всем — 16
+- подскажите пожалуйста — 18
 - происходит попытке — 16
-- продажи были — 16
-- media youtube — 14
-- youtube watch — 14
-- getty images — 14
-- может быть — 14
-- photo добрый — 14
-- этой неделе — 14
+- любое сообщение — 16
+- может быть — 16
+- media youtube — 16
+- youtube watch — 16
+- photo добрый — 16
+- меня тоже — 16
 
 ## ТОП фразы из лент (триграммы)
-- been banned reason: — 38
-- i-c-a media directorsoyuz — 38
-- media directorsoyuz nofollow — 38
-- photo i-c-a media — 36
+- i-c-a media directorsoyuz — 32
+- media directorsoyuz nofollow — 32
+- filters 5bcontent type — 32
+- been banned reason: — 30
+- photo i-c-a media — 30
 - добрый день добрый — 18
 - день добрый день — 18
-- всем привет всем — 16
-- привет всем привет — 16
-- media youtube watch — 14
-- i-c-a media neyr0graph — 12
-- media neyr0graph nofollow — 12
-- neyr0graph nofollow target — 12
-- nofollow target blank — 12
+- media youtube watch — 16
+- проверьте кнопку ошибки — 16
+- всем привет всем — 14
+- привет всем привет — 14
+- photo добрый день — 12
 - происходит попытке загрузки — 12
-- проверьте кнопку ошибки — 12
+- пожалуйста отправьте любое — 12
+- отправьте любое сообщение — 12
 
 ## Частые слова (контроль шума)
-- photo — 338
-- меня — 238
-- video — 188
-- есть — 142
-- только — 134
-- можно — 132
-- было — 120
-- тоже — 112
-- день — 112
-- видео — 108
-- может — 108
-- media — 106
-- через — 92
-- просто — 88
+- photo — 330
+- меня — 232
+- video — 194
+- только — 148
+- было — 134
+- есть — 128
+- можно — 122
+- видео — 120
+- тоже — 120
+- день — 114
+- может — 110
+- через — 106
+- media — 104
+- будет — 92
+- просто — 92
+- после — 92
 - добрый — 88
-- фото — 84
-- будет — 84
+- сейчас — 82
+- спасибо — 80
 - адоб — 80
-- после — 80
-- привет — 78
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
-- video — 34
-- pond5 — 34
-- stock — 32
-- playlist — 32
-- music — 30
-- comments — 18
-- rock — 16
-- library — 12
-- through — 12
-- shares — 12
-- techno — 12
-- glam — 12
-- bass — 12
-- effects — 10
-- inspiration — 10
-- discover — 10
-- explore — 10
-- footage — 8
-- sound — 8
-- licenses: — 8
-- covered — 8
-- pond5: — 8
-- world — 8
-- largest — 8
-- song — 8
+- viewstock — 2
 
 > Используйте фразы как темы съёмок и ключевые слова при загрузке на стоки.
