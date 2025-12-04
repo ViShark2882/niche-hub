@@ -4,85 +4,85 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-12-03 (UTC)_
+_Автообновление: 2025-12-04 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- been banned — 88
+- been banned — 84
 - banned reason: — 76
-- i-c-a media — 44
-- добрый день — 36
-- всем привет — 34
+- i-c-a media — 52
+- всем привет — 42
+- добрый день — 30
 - каждый день — 30
-- добрый вечер — 24
-- media youtube — 18
-- youtube watch — 18
-- письмо getty — 18
-- photo i-c-a — 18
-- день добрый — 16
-- привет всем — 16
+- photo i-c-a — 24
+- media directorsoyuz — 20
+- directorsoyuz nofollow — 20
+- добрый вечер — 20
+- день добрый — 18
+- привет всем — 18
+- доброе утро — 18
 - microstock plus — 16
-- media directorsoyuz — 16
-- directorsoyuz nofollow — 16
-- сделать чтобы — 14
-- media neyr0graph — 14
-- можно сделать — 14
-- здравствуйте здравствуйте — 12
+- media youtube — 16
+- youtube watch — 16
+- media neyr0graph — 16
+- скиньте email — 16
+- email личку — 16
+- boosty aivenmedia — 16
 
 ## ТОП фразы из лент (триграммы)
 - been banned reason: — 76
-- media youtube watch — 18
-- photo i-c-a media — 18
-- i-c-a media directorsoyuz — 16
-- media directorsoyuz nofollow — 16
+- photo i-c-a media — 24
+- i-c-a media directorsoyuz — 20
+- media directorsoyuz nofollow — 20
+- media youtube watch — 16
+- i-c-a media neyr0graph — 16
+- всем привет всем — 16
+- привет всем привет — 16
+- скиньте email личку — 16
 - добрый день добрый — 14
 - день добрый день — 14
-- всем привет всем — 14
-- привет всем привет — 14
-- i-c-a media neyr0graph — 14
-- добрый вечер добрый — 12
-- вечер добрый вечер — 12
-- нибудь получал письмо — 12
-- получал письмо getty — 12
-- письмо getty image — 12
+- пожалуйста отправьте любое — 12
+- отправьте любое сообщение — 12
+- любое сообщение этот — 12
+- сообщение этот течение — 12
 
 ## Частые слова (контроль шума)
-- photo — 249
-- меня — 208
-- можно — 186
-- есть — 158
-- media — 130
-- через — 126
-- только — 124
-- video — 118
-- день — 114
-- просто — 108
-- сейчас — 106
-- было — 104
-- видео — 100
-- может — 96
-- been — 88
-- banned — 88
-- спасибо — 86
-- тоже — 84
-- работает — 84
+- photo — 265
+- меня — 192
+- можно — 178
+- есть — 150
+- media — 134
+- только — 120
+- video — 116
+- просто — 114
+- через — 110
+- день — 106
+- видео — 96
+- сейчас — 94
+- been — 84
+- banned — 84
+- работает — 82
+- было — 80
+- спасибо — 78
 - reason: — 76
+- подскажите — 76
+- тоже — 72
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
+- music — 34
 - video — 34
 - pond5 — 34
 - stock — 32
 - playlist — 32
-- music — 30
 - comments — 18
+- bass — 16
 - rock — 16
 - library — 12
 - through — 12
-- shares — 12
 - techno — 12
 - glam — 12
-- bass — 12
 - effects — 10
 - inspiration — 10
+- shares — 10
 - discover — 10
 - explore — 10
 - footage — 8
@@ -92,6 +92,6 @@ _Автообновление: 2025-12-03 (UTC)_
 - pond5: — 8
 - world — 8
 - largest — 8
-- song — 8
+- dance — 8
 
 > Используйте фразы как темы съёмок и ключевые слова при загрузке на стоки.
