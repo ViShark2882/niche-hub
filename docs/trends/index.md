@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-12-07 (UTC)_
+_Автообновление: 2025-12-08 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- been banned — 92
-- banned reason: — 74
-- всем привет — 50
-- i-c-a media — 38
+- been banned — 76
+- banned reason: — 60
+- всем привет — 54
+- i-c-a media — 48
 - добрый день — 32
-- каждый день — 26
-- youtube watch — 22
+- photo i-c-a — 30
+- привет всем — 24
+- media directorsoyuz — 22
+- directorsoyuz nofollow — 22
 - доброе утро — 22
-- привет всем — 22
 - adobe stock — 22
-- media youtube — 20
-- подскажите пожалуйста — 20
-- media directorsoyuz — 20
-- directorsoyuz nofollow — 20
 - день добрый — 20
-- photo i-c-a — 20
+- youtube watch — 20
 - добрый вечер — 20
-- скиньте email — 16
-- email личку — 16
+- media youtube — 18
 - можно сделать — 16
+- boosty aivenmedia — 16
+- подскажите пожалуйста — 16
+- последнюю версию — 16
+- цвет года — 16
 
 ## ТОП фразы из лент (триграммы)
-- been banned reason: — 74
-- media youtube watch — 20
-- i-c-a media directorsoyuz — 20
-- media directorsoyuz nofollow — 20
-- всем привет всем — 20
-- привет всем привет — 20
-- photo i-c-a media — 20
-- скиньте email личку — 16
+- been banned reason: — 60
+- photo i-c-a media — 30
+- i-c-a media directorsoyuz — 22
+- media directorsoyuz nofollow — 22
+- всем привет всем — 22
+- привет всем привет — 22
+- media youtube watch — 18
 - добрый день добрый — 16
 - день добрый день — 16
+- i-c-a media neyr0graph — 14
+- media neyr0graph nofollow — 14
+- neyr0graph nofollow target — 14
+- nofollow target blank — 14
+- скиньте email личку — 14
 - пожалуйста отправьте любое — 12
-- отправьте любое сообщение — 12
-- любое сообщение этот — 12
-- сообщение этот течение — 12
-- этот течение указанного — 12
 
 ## Частые слова (контроль шума)
-- photo — 243
-- можно — 178
-- меня — 168
-- есть — 126
-- video — 114
-- media — 108
-- просто — 104
-- видео — 96
-- been — 92
-- banned — 92
+- photo — 277
+- меня — 176
+- можно — 168
+- video — 132
+- media — 122
+- есть — 116
+- просто — 110
+- видео — 94
+- спасибо — 92
 - через — 90
-- спасибо — 88
-- день — 84
-- подскажите — 78
-- работает — 78
-- тоже — 76
-- reason: — 74
-- пожалуйста — 70
-- было — 70
-- привет — 70
+- работает — 88
+- привет — 78
+- been — 76
+- banned — 76
+- день — 76
+- подскажите — 74
+- тоже — 74
+- только — 72
+- надо — 70
+- года — 68
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - music — 34
