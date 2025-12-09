@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-12-08 (UTC)_
+_Автообновление: 2025-12-09 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
-- been banned — 76
-- banned reason: — 60
-- всем привет — 54
-- i-c-a media — 48
-- добрый день — 32
-- photo i-c-a — 30
-- привет всем — 24
-- media directorsoyuz — 22
-- directorsoyuz nofollow — 22
+- been banned — 56
+- всем привет — 48
+- banned reason: — 44
+- i-c-a media — 38
+- photo i-c-a — 28
+- добрый день — 26
 - доброе утро — 22
+- youtube watch — 22
 - adobe stock — 22
-- день добрый — 20
-- youtube watch — 20
-- добрый вечер — 20
-- media youtube — 18
-- можно сделать — 16
-- boosty aivenmedia — 16
+- media youtube — 20
+- цвет года — 20
+- привет всем — 18
+- день добрый — 16
+- добрый вечер — 16
 - подскажите пожалуйста — 16
 - последнюю версию — 16
-- цвет года — 16
+- media directorsoyuz — 16
+- directorsoyuz nofollow — 16
+- расскажите подробнее — 12
+- google chrome — 12
 
 ## ТОП фразы из лент (триграммы)
-- been banned reason: — 60
-- photo i-c-a media — 30
-- i-c-a media directorsoyuz — 22
-- media directorsoyuz nofollow — 22
-- всем привет всем — 22
-- привет всем привет — 22
-- media youtube watch — 18
-- добрый день добрый — 16
-- день добрый день — 16
-- i-c-a media neyr0graph — 14
-- media neyr0graph nofollow — 14
-- neyr0graph nofollow target — 14
-- nofollow target blank — 14
-- скиньте email личку — 14
+- been banned reason: — 44
+- photo i-c-a media — 28
+- media youtube watch — 20
+- всем привет всем — 18
+- привет всем привет — 18
+- i-c-a media directorsoyuz — 16
+- media directorsoyuz nofollow — 16
+- добрый день добрый — 12
+- день добрый день — 12
+- i-c-a media neyr0graph — 12
+- media neyr0graph nofollow — 12
+- neyr0graph nofollow target — 12
+- nofollow target blank — 12
 - пожалуйста отправьте любое — 12
+- отправьте любое сообщение — 12
 
 ## Частые слова (контроль шума)
-- photo — 277
-- меня — 176
-- можно — 168
-- video — 132
-- media — 122
-- есть — 116
-- просто — 110
-- видео — 94
-- спасибо — 92
-- через — 90
-- работает — 88
-- привет — 78
-- been — 76
-- banned — 76
-- день — 76
-- подскажите — 74
-- тоже — 74
+- photo — 272
+- меня — 168
+- можно — 154
+- video — 134
+- media — 114
+- спасибо — 88
+- есть — 88
+- просто — 82
 - только — 72
-- надо — 70
-- года — 68
+- работает — 72
+- года — 70
+- пожалуйста — 70
+- видео — 70
+- привет — 68
+- всем — 66
+- будет — 66
+- может — 64
+- тоже — 64
+- сейчас — 62
+- день — 62
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - music — 34
