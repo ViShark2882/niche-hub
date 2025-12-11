@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-12-10 (UTC)_
+_Автообновление: 2025-12-11 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
 - been banned — 56
 - i-c-a media — 48
 - banned reason: — 42
-- всем привет — 36
+- shine shine — 42
 - photo i-c-a — 30
+- добрый день — 28
 - youtube watch — 26
-- добрый день — 26
 - adobe stock — 24
-- скиньте email — 22
-- email личку — 22
+- всем привет — 24
 - media youtube — 22
 - цвет года — 20
-- подскажите пожалуйста — 18
 - media directorsoyuz — 18
 - directorsoyuz nofollow — 18
-- привет всем — 16
-- доброе утро — 16
-- media neyr0graph — 14
-- neyr0graph nofollow — 14
-- nofollow target — 14
+- studio imstocker — 16
+- media neyr0graph — 16
+- neyr0graph nofollow — 16
+- nofollow target — 16
+- target blank — 16
+- пожалуйста отправьте — 16
+- отправьте любое — 16
 
 ## ТОП фразы из лент (триграммы)
 - been banned reason: — 42
+- shine shine shine — 38
 - photo i-c-a media — 30
-- скиньте email личку — 22
 - media youtube watch — 22
 - i-c-a media directorsoyuz — 18
 - media directorsoyuz nofollow — 18
-- i-c-a media neyr0graph — 14
-- media neyr0graph nofollow — 14
-- neyr0graph nofollow target — 14
-- nofollow target blank — 14
-- всем привет всем — 12
-- привет всем привет — 12
-- пожалуйста отправьте любое — 12
-- отправьте любое сообщение — 12
-- любое сообщение этот — 12
+- i-c-a media neyr0graph — 16
+- media neyr0graph nofollow — 16
+- neyr0graph nofollow target — 16
+- nofollow target blank — 16
+- пожалуйста отправьте любое — 16
+- отправьте любое сообщение — 16
+- любое сообщение этот — 16
+- сообщение этот течение — 16
+- этот течение указанного — 16
 
 ## Частые слова (контроль шума)
-- photo — 284
-- меня — 178
-- video — 146
-- media — 120
+- photo — 264
+- меня — 180
+- video — 150
 - можно — 120
-- есть — 96
-- спасибо — 82
-- тоже — 76
-- просто — 76
-- только — 68
-- привет — 68
-- день — 68
-- всем — 66
-- будет — 66
-- деньги — 64
+- media — 116
+- есть — 88
+- спасибо — 80
+- день — 66
+- года — 66
+- будет — 64
+- тоже — 64
 - может — 64
-- пожалуйста — 62
-- сегодня — 62
-- сейчас — 60
-- через — 58
+- только — 64
+- просто — 62
+- сейчас — 62
+- пока — 60
+- привет — 60
+- пожалуйста — 58
+- сегодня — 58
+- через — 56
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - music — 34
