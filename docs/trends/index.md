@@ -4,68 +4,68 @@ title: Тренды недели
 permalink: /trends/
 ---
 
-_Автообновление: 2025-12-11 (UTC)_
+_Автообновление: 2025-12-12 (UTC)_
 
 ## ТОП фразы из лент (биграммы)
 - been banned — 56
 - i-c-a media — 48
 - banned reason: — 42
 - shine shine — 42
-- photo i-c-a — 30
-- добрый день — 28
-- youtube watch — 26
-- adobe stock — 24
-- всем привет — 24
-- media youtube — 22
-- цвет года — 20
-- media directorsoyuz — 18
-- directorsoyuz nofollow — 18
-- studio imstocker — 16
-- media neyr0graph — 16
+- всем привет — 28
+- добрый день — 24
+- photo i-c-a — 24
+- youtube watch — 24
+- media youtube — 20
+- людей новую — 20
+- новую тематику — 20
+- тематику хороший — 20
+- хороший быстрей — 20
+- быстрей заработок — 20
+- заработок день — 20
+- media neyr0graph — 18
+- добрый вечер — 16
 - neyr0graph nofollow — 16
 - nofollow target — 16
 - target blank — 16
-- пожалуйста отправьте — 16
-- отправьте любое — 16
 
 ## ТОП фразы из лент (триграммы)
 - been banned reason: — 42
 - shine shine shine — 38
-- photo i-c-a media — 30
-- media youtube watch — 22
-- i-c-a media directorsoyuz — 18
-- media directorsoyuz nofollow — 18
-- i-c-a media neyr0graph — 16
+- photo i-c-a media — 24
+- media youtube watch — 20
+- людей новую тематику — 20
+- новую тематику хороший — 20
+- тематику хороший быстрей — 20
+- хороший быстрей заработок — 20
+- быстрей заработок день — 20
+- i-c-a media neyr0graph — 18
 - media neyr0graph nofollow — 16
 - neyr0graph nofollow target — 16
 - nofollow target blank — 16
-- пожалуйста отправьте любое — 16
-- отправьте любое сообщение — 16
-- любое сообщение этот — 16
-- сообщение этот течение — 16
-- этот течение указанного — 16
+- скиньте email личку — 14
+- сервис сообщить проблеме — 14
 
 ## Частые слова (контроль шума)
-- photo — 264
-- меня — 180
+- photo — 266
+- меня — 166
 - video — 150
-- можно — 120
-- media — 116
-- есть — 88
-- спасибо — 80
-- день — 66
-- года — 66
-- будет — 64
-- тоже — 64
-- может — 64
-- только — 64
-- просто — 62
-- сейчас — 62
-- пока — 60
+- день — 114
+- можно — 108
+- media — 106
+- только — 84
+- есть — 74
+- может — 70
+- спасибо — 68
+- через — 66
+- всем — 64
+- будет — 62
+- пока — 62
+- видео — 60
 - привет — 60
-- пожалуйста — 58
-- сегодня — 58
-- через — 56
+- просто — 58
+- вопрос — 58
+- been — 58
+- было — 56
 
 ## Сигналы из страниц трендов (Getty/Adobe/Shutterstock/Pond5)
 - music — 34
